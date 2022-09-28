@@ -49,7 +49,8 @@
                     RangeAttributeType: findFormInputValue(formValues, 'RangeAttributeType'),
                     ReadCapacityUnits: findFormInputValue(formValues, 'ReadCapacityUnits'),
                     WriteCapacityUnits: findFormInputValue(formValues, 'WriteCapacityUnits'),
-                    SecondaryIndexes: secondaryIndexes
+                    SecondaryIndexes: secondaryIndexes,
+                    EnableStream:findFormInputValue(formValues, 'EnableStream')
                 }
                 const response = await fetch(document.location.pathname, {
                     method: 'post',
@@ -190,11 +191,24 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="TableName">Table Name</label>
                             <input type="text" id="TableName" name="TableName" class="form-control" autofocus />
                         </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="EnableStream">Enable Stream</label>
+                            <select id="EnableStream" name="EnableStream" class="form-control">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        &nbsp;
                     </div>
                 </div>
                 <div class="row">
@@ -268,6 +282,7 @@
                         <button id="saveButton" type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
+                <hr>
             </div>
         </form>
     </main>
